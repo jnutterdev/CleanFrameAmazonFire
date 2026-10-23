@@ -1,0 +1,15 @@
+# Signing key: kept local (a public copy would let anyone sign updates for this app).
+debug.keystore
+*.jks
+
+# Build output
+build/
+app/build/
+out/
+.gradle/
+local.properties
+
+# macOS / editors
+.DS_Store
+.idea/
+*.iml
