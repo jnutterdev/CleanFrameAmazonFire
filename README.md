@@ -1,8 +1,8 @@
 # Clean Launcher for Fire TV
 
-A quiet home screen for the Fire TV Stick 4K Max, modelled on
+A quiet home screen for the Fire TV, modelled on
 [CleanFrame](https://github.com/nthnclrk/CleanFrame) (Samsung The Frame / Tizen)
-and rebuilt as a native Android app.
+and also [Hector's AmazonFire build](https://github.com/Haguilar91/CleanFrameAmazonFire) rebuilt as a native Android app.
 
 A photograph, the time, and a frosted-glass dock of your apps.
 
