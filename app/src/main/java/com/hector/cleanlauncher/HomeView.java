@@ -91,6 +91,7 @@ final class HomeView extends FrameLayout {
     final List<String> dockPkgs = new ArrayList<>();
     final List<Wallpapers.Item> walls;
     String lastDockPkg;
+    private String builtDockKey;
 
     private final Runnable tick = new Runnable() {
         @Override public void run() {
@@ -207,12 +208,30 @@ final class HomeView extends FrameLayout {
 
     /** Re-read everything the activity may have changed: dock, layout, wallpaper, clock. */
     void refresh() {
-        loadDockPrefs();
-        buildDock();
+        // Rebuilding the dock costs up to ~0.5 s right after Netflix, all of it before the cover
+        // can appear, so only rebuild when what the dock shows has changed.
+        String key = dockKey();
+        if (key == null || !key.equals(builtDockKey)) {
+            loadDockPrefs();
+            buildDock();
+            builtDockKey = dockKey();
+        }
         applyHomeLayout();
         applyWallpaper(currentWall());
         updateClock();
         resetScroll();
+    }
+
+    /**
+     * The saved dock order plus which of its apps are installed; null until a dock is saved.
+     * reloadApps runs every few seconds on Fire OS, so the app list itself can't be the key.
+     */
+    private String dockKey() {
+        String saved = prefs.getString("dock_v2", null);
+        if (saved == null) return null;
+        StringBuilder k = new StringBuilder(saved).append('|');
+        for (String pkg : saved.split(",")) k.append(apps.containsKey(pkg) ? '+' : '-');
+        return k.toString();
     }
 
     void startClock() {
