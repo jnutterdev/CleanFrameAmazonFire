@@ -2,7 +2,7 @@
 
 A quiet home screen for the Fire TV, modelled on
 [CleanFrame](https://github.com/nthnclrk/CleanFrame) (Samsung The Frame / Tizen)
-and also rebuilt as a native Android app.
+and also [Hector's AmazonFire build](https://github.com/Haguilar91/CleanFrameAmazonFire) rebuilt as a native Android app.
 
 A photograph, the time, and a frosted-glass dock of your apps.
 
