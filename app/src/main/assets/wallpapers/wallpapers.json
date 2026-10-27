@@ -28,25 +28,11 @@
   "source": "https://unsplash.com/photos/M6XC789HLe8"
  },
  {
-  "id": "night",
-  "name": "Desert stars",
-  "tone": "light",
-  "credit": "Mohammad Alizade",
-  "source": "https://unsplash.com/photos/4wzRuAb-KWs"
- },
- {
   "id": "peaks",
   "name": "Blue peaks",
   "tone": "dark",
   "credit": "John Rodenn Castillo",
   "source": "https://unsplash.com/photos/rQqWOHZ96OM"
- },
- {
-  "id": "bridge",
-  "name": "Bridge at dusk",
-  "tone": "dark",
-  "credit": "Justin Wolff",
-  "source": "https://unsplash.com/photos/pbp_Ww2cewA"
  },
  {
   "id": "ridge",
@@ -77,13 +63,6 @@
   "source": "https://unsplash.com/photos/YiaGblobOGI"
  },
  {
-  "id": "sydney",
-  "name": "Sydney Harbour",
-  "tone": "light",
-  "credit": "Caleb",
-  "source": "https://unsplash.com/photos/JmuyB_LibRo"
- },
- {
   "id": "amber",
   "name": "Amber hills",
   "tone": "light",
@@ -91,17 +70,38 @@
   "source": "https://unsplash.com/photos/vazZtmYFgFY"
  },
  {
-  "id": "mint",
-  "name": "Mint wave",
-  "tone": "light",
-  "credit": "MagicPattern",
-  "source": "https://unsplash.com/photos/87PP9Zd7MNo"
- },
- {
   "id": "alpine",
   "name": "Alpine glow",
   "tone": "light",
   "credit": "Cristina Gottardi",
   "source": "https://unsplash.com/photos/CSpjU6hYo_0"
+ },
+ {
+  "id": "sakura",
+  "name": "Cherry blossom",
+  "tone": "light",
+  "credit": "Mi Min",
+  "source": "https://unsplash.com/photos/pkpqoBp11Jc"
+ },
+ {
+  "id": "shore",
+  "name": "Pink shore",
+  "tone": "light",
+  "credit": "Mo",
+  "source": "https://unsplash.com/photos/C2GKfb69cM0"
+ },
+ {
+  "id": "lilac",
+  "name": "Blossom sky",
+  "tone": "light",
+  "credit": "Poul Hoang",
+  "source": "https://unsplash.com/photos/Y36k_2pq98k"
+ },
+ {
+  "id": "daisy",
+  "name": "Pink daisy",
+  "tone": "light",
+  "credit": "Natalie Kinnear",
+  "source": "https://unsplash.com/photos/3E6zSXo-iIU"
  }
 ]
