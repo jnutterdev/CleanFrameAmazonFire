@@ -268,6 +268,8 @@ public class HomeWatcherService extends AccessibilityService implements HomeView
             return;
         }
         coverUp = true;
+        // A pick made as the last cover came down leaves its timeout behind; it isn't this cover's.
+        handler.removeCallbacks(uncover);
         picked = false;
         pendingOpen = null;
         cover.startClock();
