@@ -102,6 +102,7 @@ public class MainActivity extends Activity implements HomeView.Host {
 
     private FrameLayout root;
     private HomeView hv;
+    private boolean coverHidePending;
 
     private FrameLayout overlay;          // the open panel, if any
     private boolean overlayIsWallpaper;
@@ -149,9 +150,35 @@ public class MainActivity extends Activity implements HomeView.Host {
             hv.lastDockPkg = focus;
             hv.focusDock(false);
         }
-        HomeWatcherService.hideCover();
+        hideCoverWhenEntered();
         hv.startClock();
         if (overlay == null && getCurrentFocus() == null) hv.focusDock(false);
+    }
+
+    /**
+     * onResume comes before we're on screen, and Fire OS fades our window in from dim even with
+     * window animations off; dropping the cover before that ends shows Amazon's home through us.
+     * Wait for onEnterAnimationComplete, or 1.5 s at most.
+     */
+    private void hideCoverWhenEntered() {
+        if (coverHidePending) return;
+        coverHidePending = true;
+        handler.postDelayed(hideCoverNow, 1500);
+    }
+
+    private final Runnable hideCoverNow = new Runnable() {
+        @Override public void run() {
+            if (!coverHidePending) return;
+            coverHidePending = false;
+            handler.removeCallbacks(this);
+            HomeWatcherService.hideCover();
+        }
+    };
+
+    @Override
+    public void onEnterAnimationComplete() {
+        super.onEnterAnimationComplete();
+        getWindow().getDecorView().postOnAnimation(hideCoverNow);
     }
 
     /** Coming back from behind the cover can leave nothing focused; pick the last Home item. */
@@ -164,6 +191,9 @@ public class MainActivity extends Activity implements HomeView.Host {
     @Override
     protected void onPause() {
         super.onPause();
+        // A removal still pending from this resume must not take down a later cover.
+        coverHidePending = false;
+        handler.removeCallbacks(hideCoverNow);
         hv.stopClock();
     }
 
