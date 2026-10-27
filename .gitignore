@@ -9,6 +9,9 @@ out/
 .gradle/
 local.properties
 
+# Private device data: TV settings backups, captured logs
+.local/
+
 # macOS / editors
 .DS_Store
 .idea/
